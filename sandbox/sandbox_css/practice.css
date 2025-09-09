@@ -1,37 +1,40 @@
+* {
+  border: 1px solid red;
+    }
 
-
-*{
-    border: 1px solid red;
-}
 header {
 
-    height: 20vh;
-
-    background-color: rgb(209, 79, 79);
-}
-
-
-.header_text {
-    display:flex
+    display: flex;
     flex-direction: row;
     gap: 2rem;
-    height: 50vh;
- background-color: rgb(241, 188, 214);
+    height: 70vh;
+    background-color: rgb(250, 228, 249);
+
 }
 
-.header_pic {
-     background-color: rgb(241, 188, 214);
-     height: 50vh;
-    width: 45%
+.header_text {
+
+    background-color:rgb(160, 95, 159);
+    height: 50vh;
+    width: 45%;
 }
+
+
+.header_pic {
+    background-color:rgb(200, 159, 214);
+    height: 50vh;
+    width: 45%;
+}
+
+
 
 
 h1 {
     color: #4d1979;
-    background-color: rgb(210, 170, 234);
+    background-color:rgb(232, 150, 222);
 }
 
 h2 {
     color: #4d1979;
-    background-color: rgb(210, 170, 234);
+    background-color:rgb(178, 77, 212);
 }
