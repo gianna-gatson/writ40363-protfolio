@@ -6,6 +6,57 @@
 console.log('Dashboard app loaded!');
 console.log('LAB16: Learning fetch() API');
 
+// Theme Management
+function initializeTheme() {
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem('dashboardTheme');
+
+  if (savedTheme === 'dark') {
+    document.body.classList.add('theme-dark');
+    updateThemeIcon('dark');
+  } else {
+    updateThemeIcon('light');
+  }
+}
+
+function toggleTheme() {
+  const isDark = document.body.classList.toggle('theme-dark');
+
+  // Save preference
+  localStorage.setItem('dashboardTheme', isDark ? 'dark' : 'light');
+
+  // Update icon
+  updateThemeIcon(isDark ? 'dark' : 'light');
+
+  console.log('Theme switched to:', isDark ? 'dark' : 'light');
+}
+
+function updateThemeIcon(theme) {
+  const themeIcon = document.querySelector('.theme-icon');
+
+  if (theme === 'dark') {
+    themeIcon.textContent = '☀️'; // Sun for dark mode (to switch to light)
+  } else {
+    themeIcon.textContent = '🌙'; // Moon for light mode (to switch to dark)
+  }
+}
+
+function setupThemeToggle() {
+  const themeToggleBtn = document.getElementById('theme-toggle');
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+  }
+}
+
+// Call these when page loads
+initializeTheme();
+setupThemeToggle();
+
+
+
+
+
 // Function to load weather data
 function loadWeather() {
     console.log('🌤️ Loading weather data...');
@@ -23,8 +74,19 @@ function loadWeather() {
             console.error('❌ Error loading weather:', error);
             displayWeatherError();
         });
-}
 
+        fetch('./data/weather.json')
+    .then(response => {
+        console.log('1. Got response:', response);
+        console.log('2. Response OK?', response.ok);
+        return response.json();
+    })
+    .then(data => {
+        console.log('3. Converted to JavaScript:', data);
+        console.log('4. Temperature:', data.temperature);
+        displayWeather(data);
+    });
+}
 
 // Function to display weather data in the DOM
 function displayWeather(weather) {
@@ -48,16 +110,15 @@ function displayWeather(weather) {
                 <span>💨 Wind Speed</span>
                 <strong>${weather.windSpeed} mph</strong>
             </div>
-        </div>
-        <div class="weather-detail">
-    <span>🌡️ Feels Like</span>
-    <strong>${weather.feelsLike}°F</strong>
-</div>
+            <div class="weather-detail">
+                <span>🌡️ Feels Like</span>
+                <strong>${weather.feelsLike}°F</strong>
+            </div>
+             </div>
     `;
 
     console.log('✅ Weather displayed successfully!');
 }
-
 
 // Function to show error message if weather data fails to load
 function displayWeatherError() {
@@ -72,26 +133,10 @@ function displayWeatherError() {
     `;
 }
 
-
 // Load weather data when page loads
 loadWeather();
 
-
-fetch('./data/weather.json')
-    .then(response => {
-        console.log('1. Got response:', response);
-        console.log('2. Response OK?', response.ok);
-        return response.json();
-    })
-    .then(data => {
-        console.log('3. Converted to JavaScript:', data);
-        console.log('4. Temperature:', data.temperature);
-        displayWeather(data);
-    });
-
-
-
-    // Global variable to store all quotes
+// Global variable to store all quotes
 let allQuotes = [];
 let currentQuoteIndex = -1; // Track current quote to avoid repeats
 
@@ -170,10 +215,6 @@ function setupQuotesButton() {
 // Call setupQuotesButton after DOM is loaded
 setupQuotesButton();
 
-loadQuotes();
-setupQuotesButton();
-
-
 // ========================================
 // TASKS WIDGET (from LAB18)
 // ========================================
@@ -187,6 +228,12 @@ function loadTasks() {
   } else {
     return []; // Return empty array if no tasks yet
   }
+}
+
+// Function to save tasks to localStorage
+function saveTasks(tasks) {
+  localStorage.setItem('dashboardTasks', JSON.stringify(tasks));
+  console.log('Tasks saved:', tasks);
 }
 
 // Function to display all tasks
@@ -212,6 +259,35 @@ function displayTasks() {
   tasks.forEach((task, index) => {
     const taskItem = document.createElement('div');
     taskItem.className = `task-item ${task.completed ? 'completed' : ''}`;
+
+    // Create checkbox
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = task.completed;
+    checkbox.addEventListener('change', () => toggleTask(index));
+
+    // Create task text
+    const taskText = document.createElement('span');
+    taskText.className = 'task-text';
+    taskText.textContent = task.text;
+
+    // Create delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'btn-delete';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.addEventListener('click', () => deleteTask(index));
+
+    // Append all elements to task item
+    taskItem.appendChild(checkbox);
+    taskItem.appendChild(taskText);
+    taskItem.appendChild(deleteBtn);
+
+    tasksList.appendChild(taskItem);
+  });
+
+  updateTaskStats(tasks);
+}
+
 // Function to add a new task
 function addTask(taskText) {
   const tasks = loadTasks();
@@ -262,7 +338,17 @@ function deleteTask(index) {
   const tasks = loadTasks();
   const taskToDelete = tasks[index];
 
-  // Function to update task statistics
+  // Optional: Confirm before deleting
+  if (confirm(`Delete task: "${taskToDelete.text}"?`)) {
+    tasks.splice(index, 1);
+    saveTasks(tasks);
+    displayTasks();
+
+    console.log('Task deleted');
+  }
+}
+
+// Function to update task statistics
 function updateTaskStats(tasks) {
   const statsDiv = document.getElementById('task-stats');
 
@@ -285,50 +371,9 @@ function updateTaskStats(tasks) {
   `;
 }
 
-  // Optional: Confirm before deleting
-  if (confirm(`Delete task: "${taskToDelete.text}"?`)) {
-    tasks.splice(index, 1);
-    saveTasks(tasks);
-    displayTasks();
-
-    console.log('Task deleted');
-  }
-}
-    // Create checkbox
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.checked = task.completed;
-    checkbox.addEventListener('change', () => toggleTask(index));
-
-    // Create task text
-    const taskText = document.createElement('span');
-    taskText.className = 'task-text';
-    taskText.textContent = task.text;
-
-    // Create delete button
-    const deleteBtn = document.createElement('button');
-    deleteBtn.className = 'btn-delete';
-    deleteBtn.textContent = 'Delete';
-    deleteBtn.addEventListener('click', () => deleteTask(index));
-
-    // Append all elements to task item
-    taskItem.appendChild(checkbox);
-    taskItem.appendChild(taskText);
-    taskItem.appendChild(deleteBtn);
-
-    tasksList.appendChild(taskItem);
-  });
-
-  updateTaskStats(tasks);
-}
-
-
-// Function to save tasks to localStorage
-function saveTasks(tasks) {
-  localStorage.setItem('dashboardTasks', JSON.stringify(tasks));
-  console.log('Tasks saved:', tasks);
-}
-
 // Initialize tasks when page loads
 displayTasks();
 setupTaskForm();
+
+
+

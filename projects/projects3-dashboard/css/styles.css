@@ -41,6 +41,36 @@
   --font-size-3xl: 32px;
 }
 
+/* Dark Theme - Override Variables */
+body.theme-dark {
+  /* Backgrounds */
+  --color-bg-light: #1a202c;
+  --color-bg-white: #2d3748;
+
+  /* Text Colors */
+  --color-text-dark: #f7fafc;
+  --color-text-muted: #cbd5e0;
+
+  /* UI Elements */
+  --color-border: #4a5568;
+
+  /* Accent Colors (lighter in dark mode) */
+  --color-accent: #63b3ed;
+
+  /* Shadows (darker in dark mode) */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.5);
+
+  /* Error Colors (adjusted for dark mode) */
+  --color-error-bg: #742a2a;
+
+  /* Header Gradient (different colors for dark mode) */
+  --color-primary: #4a5568;
+  --color-secondary: #2d3748;
+}
+
+
 
 * {
     margin: 0;
@@ -62,7 +92,7 @@ header {
 }
 
 header h1 {
-    color: #2d3748;
+    color: var(--color-text-dark);
 }
 
 .dashboard {
@@ -117,19 +147,19 @@ header h1 {
 .weather-temp {
     font-size: 48px;
     font-weight: bold;
-    color: #2d3748;
+    color: var(--color-text-dark);
     margin: 10px 0;
 }
 
 .weather-location {
     font-size: 18px;
-    color: #718096;
+    color: var(--color-text-muted);
     margin: 5px 0;
 }
 
 .weather-condition {
     font-size: 16px;
-    color: #4a5568;
+    color: var(--color-border);
     font-weight: 500;
 }
 
@@ -148,13 +178,13 @@ header h1 {
 .weather-detail span {
     display: block;
     font-size: 14px;
-    color: #718096;
+    color: var(--color-text-muted);
     margin-bottom: 5px;
 }
 
 .weather-detail strong {
     font-size: 18px;
-    color: #2d3748;
+    color: var(--color-text-dark);
 }
 
 /* Error Message Styles */
@@ -175,12 +205,12 @@ header h1 {
 }
 
 .error-hint {
-    color: #a0aec0;
+    color: var(--color-text-muted);
     font-size: 14px !important;
 }
 
 .quotes-widget {
-  background: #ffffff;
+  background: var(--color-bg-white);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -199,7 +229,7 @@ header h1 {
 .quote-text {
   font-size: 20px;
   line-height: 1.6;
-  color: #2d3748;
+  color: var(--color-text-dark);
   font-style: italic;
   margin-bottom: 15px;
   max-width: 600px;
@@ -212,8 +242,8 @@ header h1 {
 }
 
 .btn-primary {
-  background: #4299e1;
-  color: white;
+  background: var(--color-accent);
+  color: var(--color-bg-white);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -249,7 +279,7 @@ header h1 {
 }
 
 .tasks-widget {
-  background: #ffffff;
+  background: var(--color-bg-white);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -271,7 +301,7 @@ header h1 {
 
 .task-form input[type="text"]:focus {
   outline: none;
-  border-color: #4299e1;
+  border-color: var(--color-accent);
 }
 
 .task-stats {
@@ -282,11 +312,11 @@ header h1 {
   border-radius: 5px;
   margin-bottom: 15px;
   font-size: 13px;
-  color: #4a5568;
+  color: var(--color-text-dark);
 }
 
 .task-stats .stat strong {
-  color: #2d3748;
+  color: var(--color-text-dark);
 }
 
 .tasks-list {
@@ -306,7 +336,7 @@ header h1 {
 }
 
 .task-item:hover {
-  background: #f7fafc;
+  background: var(--color-bg-light)
 }
 
 .task-item input[type="checkbox"] {
@@ -329,7 +359,7 @@ header h1 {
 .btn-delete {
   padding: 6px 12px;
   background: #fc8181;
-  color: white;
+  color: var(--color-bg-white);
   border: none;
   border-radius: 4px;
   font-size: 12px;
@@ -346,4 +376,41 @@ header h1 {
   padding: 40px 20px;
   color: #a0aec0;
   font-size: 14px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(20deg);
+}
+
+.theme-icon {
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
