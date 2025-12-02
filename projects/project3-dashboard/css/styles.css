@@ -48,8 +48,8 @@ body.theme-dark {
   --color-bg-white: #2d3748;
 
   /* Text Colors */
-  --color-text-dark: #f7fafc;
-  --color-text-muted: #cbd5e0;
+  --color-text-dark: #edf2f7;
+  --color-text-muted: #a0aec0;
 
   /* UI Elements */
   --color-border: #4a5568;
@@ -308,7 +308,7 @@ header h1 {
   display: flex;
   justify-content: space-around;
   padding: 15px;
-  background: #f7fafc;
+  background: var(--color-bg-light);
   border-radius: 5px;
   margin-bottom: 15px;
   font-size: 13px;
@@ -329,7 +329,7 @@ header h1 {
   align-items: center;
   gap: 10px;
   padding: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
   border-radius: 5px;
   margin-bottom: 8px;
   transition: background 0.2s ease;
@@ -348,12 +348,12 @@ header h1 {
 .task-item .task-text {
   flex: 1;
   font-size: 14px;
-  color: #2d3748;
+  color: var(--color-text-dark);
 }
 
 .task-item.completed .task-text {
   text-decoration: line-through;
-  color: #a0aec0;
+  color: var(--color-text-muted);
 }
 
 .btn-delete {
@@ -374,7 +374,7 @@ header h1 {
 .no-tasks {
   text-align: center;
   padding: 40px 20px;
-  color: #a0aec0;
+  color: var(--color-text-muted);
   font-size: 14px;
 }
 
