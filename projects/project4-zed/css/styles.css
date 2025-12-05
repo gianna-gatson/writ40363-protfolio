@@ -1,0 +1,201 @@
+/* Comment Section Styles */
+.comment-section {
+    max-width: 700px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 2rem;
+}
+.comment-section h2 {
+    margin-top: 0;
+}
+#comment-form {
+    margin-bottom: 2rem;
+}
+.comment-card {
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.comment-actions {
+    margin-top: 0.5rem;
+}
+.comment-actions button {
+    margin-right: 0.5rem;
+    background: #e3f2fd;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.comment-actions button:hover {
+    background: #bbdefb;
+}
+.comment-actions .delete-btn {
+    background: #e53935;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.comment-actions .delete-btn:hover {
+    background: #b71c1c;
+}
+.replies {
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+}
+.reply {
+    background: #fffde7;
+    border-left: 3px solid #ffd54f;
+    margin-bottom: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.97rem;
+}
+#comment-heading, #comment-text {
+    border: 3px solid #1976d2;
+    border-radius: 8px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+}
+/* Wreath border for Christmas Party section */
+.christmas-party-wreath {
+    position: relative;
+    border: 12px solid transparent;
+    border-image: url('https://pngimg.com/uploads/wreath/wreath_PNG44.png') 30 round;
+    border-radius: 24px;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #fff8f8;
+    box-shadow: 0 2px 12px rgba(200,0,0,0.08);
+}
+#pie-chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+#pieChart {
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(200,0,0,0.12);
+    border: 4px solid #c62828;
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    color: #222;
+}
+.office-header {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1rem 1rem 1rem;
+}
+.logo {
+    max-width: 220px;
+    margin-bottom: 1rem;
+}
+.subtitle {
+    font-size: 1.2rem;
+    color: #e2e2e2;
+}
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 2rem;
+}
+.characters {
+    margin-bottom: 2rem;
+}
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+.character {
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    padding: 1rem;
+    width: 180px;
+    text-align: center;
+    cursor: pointer;
+}
+.character img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+/* Highlight favorite character card */
+.character.favorite {
+    border: 3px solid #1976d2;
+    box-shadow: 0 0 16px rgba(25, 118, 210, 0.2);
+    background: #e3f2fd;
+}
+.episodes ul {
+    list-style: none;
+    padding: 0;
+}
+.episodes li {
+    background: #e7e7e7;
+    margin: 0.5rem 0;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+}
+.quotes blockquote {
+    font-style: italic;
+    background: #f0f0f0;
+    border-left: 4px solid #222;
+    margin: 1rem 0;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+}
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background: #222;
+    color: #fff;
+    margin-top: 2rem;
+    border-radius: 0 0 12px 12px;
+}
+/* Comment dropdown styled like Project 2 */
+#comment-type {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    margin-bottom: 0.7rem;
+}
+#comment-type:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+@media (max-width: 700px) {
+    main {
+        padding: 1rem;
+    }
+    .character-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}

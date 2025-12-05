@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Office Fan Site</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="office-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/The_Office_US_logo.svg" alt="The Office Logo" class="logo">
+        <h1>Welcome to Dunder Mifflin Scranton!</h1>
+        <p class="subtitle">A fan site for NBC's The Office</p>
+    </header>
+    <main>
+        <section class="characters">
+            <h2>Meet the Characters</h2> <p> Click your favorite character to see a surprise!</p>
+            <div class="character-list">
+                <div class="character" data-character="Michael Scott">
+                    <img src="images/michealscott.png" alt="Michael Scott">
+                    <h3>Michael Scott</h3>
+                    <p>World's Best Boss. Regional Manager. Loves improv and "That's what she said" jokes.</p>
+                </div>
+                <div class="character" data-character="Dwight Schrute">
+                    <img src="images/dwightschrute.png" alt="Dwight Schrute">
+                    <h3>Dwight Schrute</h3>
+                    <p>Assistant to the Regional Manager. Beet farmer. Loyal, intense, and hilarious.</p>
+                </div>
+                <div class="character" data-character="Jim Halpert">
+                    <img src="images/jimhalpert.png" alt="Jim Halpert">
+                    <h3>Jim Halpert</h3>
+                    <p>Prankster. Salesman. Pam's soulmate. Master of the camera stare.</p>
+                </div>
+                <div class="character" data-character="Pam Beesly">
+                    <img src="images/pambeesly.png" alt="Pam Beesly">
+                    <h3>Pam Beesly</h3>
+                    <p>Receptionist turned saleswoman. Artistic, kind, and witty.</p>
+                </div>
+                <div class="character" data-character="Angela Martin">
+                    <img src="images/angelamartin.png" alt="Angela Martin">
+                    <h3>Angela Martin</h3>
+                    <p>Head of the Party Planning Committee. Loves cats and strict rules.</p>
+                </div>
+                <div class="character" data-character="Kevin Malone">
+                    <img src="images/kevinmalone.png" alt="Kevin Malone">
+                    <h3>Kevin Malone</h3>
+                    <p>Accountant. Famous for his chili and deadpan humor.</p>
+                </div>
+                <div class="character" data-character="Stanley Hudson">
+                    <img src="images/stanleyhudson.png" alt="Stanley Hudson">
+                    <h3>Stanley Hudson</h3>
+                    <p>Salesman. Loves crossword puzzles and pretzel day.</p>
+                </div>
+                <div class="character" data-character="Phyllis Vance">
+                    <img src="images/phyllisvance.png" alt="Phyllis Vance">
+                    <h3>Phyllis Vance</h3>
+                    <p>Saleswoman. Sweet, motherly, and a member of the Party Planning Committee.</p>
+                </div>
+                <div class="character" data-character="Oscar Martinez">
+                    <img src="images/oscarmartinez.png" alt="Oscar Martinez">
+                    <h3>Oscar Martinez</h3>
+                    <p>Accountant. Smart, logical, and the office's resident know-it-all.</p>
+                </div>
+                <div class="character" data-character="Creed Bratton">
+                    <img src="images/creedbratton.png" alt="Creed Bratton">
+                    <h3>Creed Bratton</h3>
+                    <p>Mysterious. Eccentric. No one really knows what he does.</p>
+                </div>
+                <div class="character" data-character="Toby Flenderson">
+                    <img src="images/tobyflenderson.png" alt="Toby Flenderson">
+                    <h3>Toby Flenderson</h3>
+                    <p>HR representative. Soft-spoken, unlucky, and often ignored by Michael.</p>
+                </div>
+                <div class="character" data-character="Ryan Howard">
+                    <img src="images/ryanhoward.png" alt="Ryan Howard">
+                    <h3>Ryan Howard</h3>
+                    <p>Temp turned VP. Ambitious, trendy, and sometimes controversial.</p>
+                </div>
+                <div class="character" data-character="Kelly Kapoor">
+                    <img src="images/kellykapoor.png" alt="Kelly Kapoor">
+                    <h3>Kelly Kapoor</h3>
+                    <p>Customer Service Rep. Loves pop culture, drama, and talking.</p>
+                </div>
+            </div>
+        </section>
+        <section class="christmas-party-wreath">
+            <h2>Happy Holidays!🎄</h2>
+            <p>Vote for your favorite Christmas party episode from The Office! Your vote will help create a live holiday pie chart below. Choose your favorite and see how others voted!</p>
+            <form id="christmas-vote-form">
+                <label><input type="radio" name="episode" value="Christmas Party"> Christmas Party (Season 2)</label><br>
+                <label><input type="radio" name="episode" value="A Benihana Christmas"> A Benihana Christmas (Season 3)</label><br>
+                <label><input type="radio" name="episode" value="Moroccan Christmas"> Moroccan Christmas (Season 5)</label><br>
+                <label><input type="radio" name="episode" value="Secret Santa"> Secret Santa (Season 6)</label><br>
+                <label><input type="radio" name="episode" value="Classy Christmas"> Classy Christmas (Season 7)</label><br>
+                <label><input type="radio" name="episode" value="Christmas Wishes"> Christmas Wishes (Season 8)</label><br>
+                <button type="submit">Vote</button>
+            </form>
+            <div id="pie-chart-container">
+                <canvas id="pieChart" width="320" height="320"></canvas>
+            </div>
+        </section>
+        <section class="episodes">
+            <h2>Iconic Episodes</h2>
+            <ul>
+                <li><strong>Diversity Day</strong> – Michael's seminar goes off the rails.</li>
+                <li><strong>The Dundies</strong> – The annual office awards at Chili's.</li>
+                <li><strong>Stress Relief</strong> – Dwight's fire drill causes chaos.</li>
+                <li><strong>Casino Night</strong> – Jim confesses his feelings to Pam.</li>
+            </ul>
+        </section>
+        <section class="quotes">
+            <h2>Classic Quotes</h2>
+            <blockquote>"I'm not superstitious, but I am a little stitious." – Michael Scott</blockquote>
+            <blockquote>"Bears. Beets. Battlestar Galactica." – Jim Halpert (as Dwight)</blockquote>
+            <blockquote>"Whenever I'm about to do something, I think, 'Would an idiot do that?' And if they would, I do not do that thing." – Dwight Schrute</blockquote>
+        </section>
+
+
+    <section class="comment-section">
+        <h2>Join the Conversation</h2>
+        <form id="comment-form">
+            <label for="comment-type">I want to talk about:</label>
+            <select id="comment-type" name="comment-type">
+                <option value="character">A Character</option>
+                <option value="episode">An Episode</option>
+            </select>
+            <br>
+            <label for="comment-heading">Character/Episode Name:</label>
+            <input type="text" id="comment-heading" name="comment-heading" required>
+            <br>
+            <label for="comment-text">Your Thoughts:</label>
+            <textarea id="comment-text" name="comment-text" rows="3" required></textarea>
+            <br>
+            <button type="submit">Post Comment</button>
+        </form>
+        <div id="comments-list"></div>
+    </section>
+       </main>
+
+        <footer>
+        <p>Made with ❤️ by fans of The Office | Not affiliated with NBC</p>
+    </footer>
+
+    <script src="js/christmas-vote.js"></script>
+    <script src="js/favorite-character.js"></script>
+    <script src="js/comments.js"></script>
+</body>
+</html>
+
