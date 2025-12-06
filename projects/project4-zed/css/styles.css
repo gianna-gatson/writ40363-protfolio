@@ -70,7 +70,7 @@
 .christmas-party-wreath {
     position: relative;
     border: 12px solid transparent;
-    border-image: url('https://pngimg.com/uploads/wreath/wreath_PNG44.png') 30 round;
+    border-image: url("images/wreath.png") 30 round;
     border-radius: 24px;
     margin: 2rem 0;
     padding: 2rem;
@@ -174,7 +174,7 @@ footer {
     margin-top: 2rem;
     border-radius: 0 0 12px 12px;
 }
-/* Comment dropdown styled like Project 2 */
+/* Comment dropdown. inspired by Project 2 */
 #comment-type {
     width: 100%;
     padding: 0.75rem;
