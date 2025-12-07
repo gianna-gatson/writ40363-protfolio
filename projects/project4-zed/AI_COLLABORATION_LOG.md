@@ -16,7 +16,7 @@ Learning Moments:** 3-5 key things AI taught you
 
 
 Challenges:** What didn't work? When did AI mislead you?
-- AI didn't really mislead signifigantly enough for me to remember. I feel like throughout the project I was asking clear questions as well as giving specfifc instructions, if AI didn't get it right the first time I would adjust my prompt untill I got my desired result or answer that worked. 
+- AI reccomeneded API comments, which based on my test run I thought worked, but upon a later test run the API was not backing up in server, making it seem like the post button wasn't working. I then reverted the KPI back to localstorage. I did this change after I wrote the rest of thus collaboartion. 
 
 
 

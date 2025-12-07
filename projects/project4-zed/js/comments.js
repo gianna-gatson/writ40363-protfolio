@@ -1,31 +1,55 @@
 // Use server API for comments
-const API_URL = 'http://localhost:3001/api/comments';
+const API_URL = './comments.json'; // Use relative path for local dev
+const LOCAL_KEY = 'office_comments';
 
 async function fetchComments() {
-  const res = await fetch(API_URL);
-  return await res.json();
+  // Try localStorage first
+  const local = localStorage.getItem(LOCAL_KEY);
+  if (local) {
+    try {
+      return JSON.parse(local);
+    } catch {
+      localStorage.removeItem(LOCAL_KEY);
+    }
+  }
+  // Fallback to comments.json
+  try {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(data));
+    return data;
+  } catch (err) {
+    alert('Failed to load comments. Make sure comments.json is present.');
+    return [];
+  }
 }
 
 async function postComment(comment) {
-  const res = await fetch(API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(comment)
-  });
-  return await res.json();
+  comment.id = Date.now();
+  comment.likes = 0;
+  comment.dislikes = 0;
+  comment.replies = [];
+  comments.push(comment);
+  localStorage.setItem(LOCAL_KEY, JSON.stringify(comments));
+  renderComments();
+  return comment;
 }
 
 async function updateComment(id, data) {
-  const res = await fetch(`${API_URL}/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-  return await res.json();
+  const idx = comments.findIndex(c => c.id == id);
+  if (idx !== -1) {
+    comments[idx] = { ...comments[idx], ...data };
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(comments));
+    renderComments();
+    return comments[idx];
+  }
+  return null;
 }
 
 async function deleteComment(id) {
-  await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+  comments = comments.filter(c => c.id != id);
+  localStorage.setItem(LOCAL_KEY, JSON.stringify(comments));
+  renderComments();
 }
 
 let comments = [];
