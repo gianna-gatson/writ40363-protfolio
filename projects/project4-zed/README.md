@@ -4,7 +4,7 @@ This project is an AI-assisted web application developed as the final project fo
 
 ## Project Description
 
-*(Please add a detailed description of your specific web application here.)*
+*( A office Fan Page including charcter cards, holiday episode pie chart, famour quotes, interactive theme changing and comments. This is done by using JavaScript and pulling data from localStorage and JSON. )*
 
 ## Technologies Used
 
@@ -12,8 +12,8 @@ This project is an AI-assisted web application developed as the final project fo
 - HTML5
 - CSS3 (including Flexbox, Grid, custom properties)
 - JavaScript (ES6+)
-- External APIs (e.g., ...)
-- AI Assistants (e.g., GitHub Copilot, ChatGPT, Claude)
+- Attempted External API and Node.JS
+- ChatGpt4
 
 ## Setup Instructions
 
